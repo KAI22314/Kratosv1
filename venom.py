@@ -6,8 +6,8 @@ import asyncio
 
 API_TOKEN = '7068548626:AAFfGsYsVmh0KAwfHkbqH1OEuPL-_j34V-k'
 ADMIN_ID = '1268055241'
-MAX_RESTARTS = 5
-RESTART_PERIOD = 60  # Seconds
+MAX_RESTARTS = 5000
+RESTART_PERIOD = 0 # Seconds
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 bot = Bot(API_TOKEN)
@@ -45,7 +45,7 @@ async def main():
         await notify_admin("🚀 Bot is starting...")
 
         while process.poll() is None:
-            await asyncio.sleep(5)
+            await asyncio.sleep(500)
         
         logging.warning("Bot process terminated. Restarting in 10 seconds...")
         await notify_admin("⚠️ The bot has crashed and will be restarted in 10 seconds.")
